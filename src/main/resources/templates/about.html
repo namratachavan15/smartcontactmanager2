@@ -1,0 +1,72 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org" th:replace="base::layout(~{::section})">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>About Us - Smart Contact Manager</title>
+    <link rel="stylesheet" href="styles.css">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Bona+Nova+SC:ital,wght@0,400;0,700;1,400&family=Playfair+Display:ital,wght@0,400..900;1,400..900&family=Playwrite+CZ:wght@100..400&display=swap" rel="stylesheet">
+</head>
+<body>
+
+<section class="banner d-flex justify-content-center align-items-center">
+    <div class="text-center">
+        <h1 class="font-weight-bold">Smart Contact Manager</h1>
+        <p>Start collecting your contacts in a smarter way. We provide efficient and intelligent tools for managing contacts.</p>
+    </div>
+</section>
+
+<section class="about-section pt-5 bg-light">
+    <div class="container">
+        <div class="row">
+            <div class="col-md-6">
+                <h2 class="section-title" style="font-family: Bona Nova SC, serif; font-weight: 400;">Our Mission</h2>
+                <p>We are committed to simplifying contact management through innovative technology. Our mission is to provide individuals and businesses with tools that streamline the process of organizing and accessing contacts.</p>
+            </div>
+            <div class="col-md-6">
+                <h2 class="section-title" style="font-family: Bona Nova SC, serif; font-weight: 400;">Why Choose Us?</h2>
+                <p>Choosing Smart Contact Manager means choosing efficiency, reliability, and user-friendly experience. With features designed to meet your needs, we ensure you spend less time managing contacts and more time building relationships.</p>
+            </div>
+        </div>
+    </div>
+</section>
+
+<section class="team-section pt-5">
+    <div class="container">
+        <h2 class="section-title text-center" style="font-family: Bona Nova SC, serif; font-weight: 400; font-size:40px;">Meet Our Team</h2>
+        <div class="row pt-5 text-center" style="font-family: Bona Nova SC, serif; font-weight: 400;">
+            <div class="col-md-4">
+                <div class="team-member">
+                    <img  th:src="@{/img/c1.png}"  alt="Team Member 1" class="team-member-img img-fluid rounded">
+                    <h3 class="pt-4">John Doe</h3>
+                    <p>Co-Founder & CEO</p>
+                </div>
+            </div>
+            <div class="col-md-4">
+                <div class="team-member" >
+                    <img  th:src="@{/img/c2.png}" alt="Team Member 2" class="team-member-img img-fluid rounded mt-3">
+                    <h3 class="pt-2">Jane Smith</h3>
+                    <p >Co-Founder & CTO</p>
+                </div>
+            </div>
+            <div class="col-md-4">
+                <div class="team-member">
+                    <img  th:src="@{/img/c3.png}" alt="Team Member 3" class="team-member-img img-fluid rounded" style="height:250px;">
+                    <h3 class="pt-4">Michael Johnson</h3>
+                    <p>Lead Developer</p>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+
+<footer class="footer bg-dark">
+    <div class="container">
+        <p class="text-center">&copy; 2024 Smart Contact Manager. All rights reserved.</p>
+    </div>
+</footer>
+
+</body>
+</html>

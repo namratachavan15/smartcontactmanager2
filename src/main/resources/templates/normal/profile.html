@@ -1,0 +1,56 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org" th:replace="normal/base::layout(~{::section})">
+<head>
+    <meta charset="UTF-8">
+    <title>User Profile</title>
+    <link href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css" rel="stylesheet">
+</head>
+<body>
+    <section>
+        <div class="container pt-5">
+            <div class="card">
+                <div class="card-body">
+                    <!-- Profile Picture -->
+                    <!-- <div class="text-center mb-4">
+                        <img src="" class="rounded-circle" th:src="@{'/img/'+${user.image}}" alt="profile photo" style="height: 200px; width: 200px;">
+                    </div> -->
+                    <!-- User Name -->
+                    <h1 class="text-center text-success" th:text="${user.name}" style="color:#4CC082;font-family:Playwrite CZ, cursive;"></h1>
+                    <!-- User Info Table -->
+                    <table class="table table-bordered text-center mt-4">
+                        <thead class="thead-light">
+                            <tr>
+                                <th scope="col" class="text-success">USERID</th>
+                                <th scope="col"><span th:text="${user.Id}"></span></th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <tr>
+                                <th scope="row" class="text-success">Email</th>
+                                <td><span th:text="${user.email}"></span></td>
+                            </tr>
+                            <tr>
+                                <th scope="row" class="text-success">Role</th>
+                                <td><span th:text="${user.role}"></span></td>
+                            </tr>
+                            <tr>
+                                <th scope="row" class="text-success">Account Active</th>
+                                <td><span th:text="${user.enable}"></span></td>
+                            </tr>
+                            <tr>
+                                <th scope="row" class="text-success">About you</th>
+                                <td><span th:text="${user.about}"></span></td>
+                            </tr>
+                        </tbody>
+                    </table>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Bootstrap JS and dependencies -->
+    <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.9.2/dist/umd/popper.min.js"></script>
+    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
+</body>
+</html>

@@ -1,0 +1,69 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org"
+	th:replace="base::layout(~{::section})">
+<head>
+<meta charset="UTF-8">
+<title>Insert title here</title>
+
+</head>
+
+<body>
+	<section style="background-image:url(https://img.freepik.com/free-photo/abstract-digital-grid-black-background_53876-97647.jpg?size=626&ext=jpg&ga=GA1.1.2008272138.1721606400&semt=ais_user);  background-repeat:no-repeat; background-size:cover; height:650px; filter:brightness(80%)">
+		<div id="login" style="height: 100px;" >
+
+			<div class="container rounded" style="color:#4CC082;font-family:Playwrite CZ, cursive;height: 100px;">
+				<div id="login-row"
+					class="row justify-content-center align-items-center">
+					<div id="login-column" class="col-md-6">
+						<div id="login-box" class="col-md-12" style="height: 420px;">
+							<form id="login-form" class="form" th:action="@{/dologin}"
+								action="" method="post">
+								<h3 class="text-center" >Login</h3>
+								<div th:if="${param.error}" class="alert alert-danger" style="height: 45px;">
+									Invalid username and password</div>
+								<div th:if="${param.logout}" class="alert alert-success" style="height: 45px;">
+									You have been logged out</div>
+									
+									<div th:if="${param.change}" class="alert alert-success" style="height: 45px;">
+									<p th:text="${param.change}"></p></div>
+								<div class="form-group">
+									<label for="username" >Username:</label><br>
+									<input type="text" name="username" id="username"
+										class="form-control">
+								</div>
+								<div class="form-group">
+									<label for="password" >Password:</label><br>
+									<input type="password" name="password" id="password"
+										class="form-control">
+								</div>
+								<div class="form-group">
+									<label for="remember-me" ><span>Remember
+											me</span> <span><input  id="remember-me" name="remember-me"
+											type="checkbox"></span></label><br> <input type="submit"
+										name="submit" class="btn btn-block  btn-md text-white "  value="submit" style="background-color:#4CC082">
+								</div>
+								<div class="container">
+								<div class="row">
+								<div class="col-4">
+								<div id="register-link" class="text-left mt-2" >
+									<a href="/signup" style="color:#4CC082;font-family:Playwrite CZ, cursive;">Register here</a>
+								</div>
+								</div>
+								<div class="col-4">
+								</div>
+								<div class="col-4">
+								<div class="text-right mt-2">
+								<a th:href="@{/forgot}" style="color:#4CC082;font-family:Playwrite CZ, cursive;">Forgot Password</a>
+								</div>
+								</div>
+								</div>
+								</div>
+							</form>
+						</div>
+					</div>
+				</div>
+			</div>
+		</div>
+	</section>
+</body>
+</html>
