@@ -125,7 +125,7 @@
 							<tr th:each="c : ${contacts}">
 								<th scope="row" th:text="'SCMUSER'+${c.cId}">1</th>
 								<td>
-									<img src="" class="rounded-circle mr-2" style="height: 40px; width: 40px;" th:src="@{'/img/'+${c.image}}" alt="Profile picture" />
+									<img src="" class="rounded-circle mr-2" style="height: 40px; width: 40px;" th:src="@{'/user/img/'+${c.image}}" alt="Profile picture" />
 									<span th:text="${c.name}"></span>
 								</td>
 								<td>
