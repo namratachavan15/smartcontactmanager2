@@ -1,6 +1,7 @@
 package com.smart.smartcontactmanager.controller;
 
 import java.io.File;
+import java.io.IOException;
 import java.nio.file.Files;
 import java.nio.file.Path;
 import java.nio.file.Paths;
@@ -26,6 +27,7 @@ import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
+import org.springframework.web.bind.annotation.ResponseBody;
 import org.springframework.web.multipart.MultipartFile;
 
 import com.smart.smartcontactmanager.Repo.ContactRepository;
@@ -33,6 +35,13 @@ import com.smart.smartcontactmanager.Repo.UserRepository;
 import com.smart.smartcontactmanager.entities.Contact;
 import com.smart.smartcontactmanager.entities.User;
 import com.smart.smartcontactmanager.helper.Message;
+import org.springframework.core.io.Resource;
+import org.springframework.core.io.UrlResource;
+import org.springframework.http.HttpHeaders;
+import org.springframework.http.ResponseEntity;
+import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.PathVariable;
+import org.springframework.web.bind.annotation.ResponseBody;
 
 import javassist.expr.NewArray;
 
@@ -95,9 +104,20 @@ public class UserController {
 	            contact.setImage("contact.png");
 	        } else {
 	            contact.setImage(file.getOriginalFilename());
-	            File file2 = new ClassPathResource("static/img").getFile();
-	            Path path = Paths.get(file2.getAbsolutePath() + File.separator + file.getOriginalFilename());
+//	            File file2 = new ClassPathResource("static/img").getFile();
+//	            Path path = Paths.get(file2.getAbsolutePath() + File.separator + file.getOriginalFilename());
+	            
+	           // Files.copy(file.getInputStream(), path, StandardCopyOption.REPLACE_EXISTING);
+	            String uploadDir = "Uploads"; // or "/absolute/path/to/uploads"
+	            Path uploadPath = Paths.get(uploadDir);
+
+	            if (!Files.exists(uploadPath)) {
+	                Files.createDirectories(uploadPath);
+	            }
+
+	            Path path = uploadPath.resolve(file.getOriginalFilename());
 	            Files.copy(file.getInputStream(), path, StandardCopyOption.REPLACE_EXISTING);
+
 	            System.out.println("Image is uploaded");
 	        }
 	        contact.setUser(user);
@@ -278,4 +298,21 @@ public class UserController {
 		}
 		return "redirect:/user/index";
 	}
+	
+	@GetMapping("/img/{filename:.+}")
+	@ResponseBody
+	public ResponseEntity<Resource> serveFile(@PathVariable String filename) throws IOException {
+	    Path uploadDir = Paths.get("uploads");
+	    Path file = uploadDir.resolve(filename);
+	    Resource resource = new UrlResource(file.toUri());
+
+	    if (resource.exists() || resource.isReadable()) {
+	        return ResponseEntity.ok()
+	            .header(HttpHeaders.CONTENT_DISPOSITION, "inline; filename=\"" + resource.getFilename() + "\"")
+	            .body(resource);
+	    } else {
+	        throw new RuntimeException("Could not read file: " + filename);
+	    }
+	}
+
 }
