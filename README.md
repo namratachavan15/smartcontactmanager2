@@ -7,4 +7,5 @@
 ![user_show-contacts_0](https://github.com/user-attachments/assets/4fe5df39-51f7-4584-9dcc-4945cb568d47)
 ![deletecontact](https://github.com/user-attachments/assets/fe0c9481-3645-4785-bf4d-f9a85155520e)
 ![user_profile](https://github.com/user-attachments/assets/6e1ae28e-edae-432a-91fa-ee2e1e6ba117)
-![Uploading user_settings.png…]()
+
+![user_settings](https://github.com/user-attachments/assets/fcde2f19-4efb-4ca1-83d6-32b707412e69)
